@@ -13,6 +13,6 @@ class LaravelOptionsFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-options';
+        return 'LaravelOptions';
     }
 }

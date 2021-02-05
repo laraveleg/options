@@ -48,7 +48,7 @@
                 "Foxlaby\\LaravelOptions\\LaravelOptionsServiceProvider"
             ],
             "aliases": {
-                "Foxlaby": "Foxlaby\\LaravelOptions\\LaravelOptionsFacade"
+                "LaravelOptions": "Foxlaby\\LaravelOptions\\LaravelOptionsFacade"
             }
         }
     }
