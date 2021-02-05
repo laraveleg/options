@@ -10,25 +10,37 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class LaravelOptionsTest extends TestCase
 {
     /**
-     * A options put test example.
+     * pass put options test.
      *
      * @return void
      */
-    public function testOptionsPut()
+    public function testPassOptionsPut()
     {
         $options = new LaravelOptions();
         $options_put = $options->put('name', 'karim');
         
-        $this->assertEquals($options_put, 'Put name');
+        $this->assertEquals($options_put, 'karim');
     }
 
-
     /**
-     * A options put test example.
+     * pass not put options test.
      *
      * @return void
      */
-    public function testOptionsGet()
+    public function testPassOptionsNotPut()
+    {
+        $options = new LaravelOptions();
+        $options_put = $options->put('name');
+        
+        $this->assertNull($options_put);
+    }
+
+    /**
+     * pass get options test.
+     *
+     * @return void
+     */
+    public function testPassOptionsGet()
     {
         $options = new LaravelOptions();
         $options->put('name', 'karim');
@@ -36,4 +48,47 @@ class LaravelOptionsTest extends TestCase
         
         $this->assertEquals($options_value, 'karim');
     }
+
+    /**
+     * pass not get options test.
+     *
+     * @return void
+     */
+    public function testPassOptionsNotGet()
+    {
+        $options = new LaravelOptions();
+        $options->put('name', 'karim');
+        $options_value = $options->get('age');
+        
+        $this->assertNull($options_value);
+    }
+
+    /**
+     * pass has options test.
+     *
+     * @return void
+     */
+    public function testPassOptionsHas()
+    {
+        $options = new LaravelOptions();
+        $options->put('name', 'karim');
+        $options_check = $options->has('name');
+        
+        $this->assertTrue($options_check);
+    }
+
+    /**
+     * pass not has options test.
+     *
+     * @return void
+     */
+    public function testPassOptionsNotHas()
+    {
+        $options = new LaravelOptions();
+        $options->put('name', 'karim');
+        $options_check = $options->has('age');
+        
+        $this->assertFalse($options_check);
+    }
+
 }

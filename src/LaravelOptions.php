@@ -6,17 +6,33 @@ use Illuminate\Support\Facades\Cache;
 
 class LaravelOptions
 {
+    private $prefix;
+
+    public function __construct($prefix = '')
+    {
+        $this->prefix = $prefix;
+    }
+
     public function put($key, $value = null, $minutes = null)
     {
-        Cache::put($key, $value, now()->addMinutes($minutes));
+        if (!$value) {
+            return null;
+        }
 
-        return 'Put '.$key;
+        Cache::put($this->prefix.$key, $value, now()->addMinutes($minutes));
+
+        return $value;
     }
 
     public function get($key, $default = null)
     {
-        $value = Cache::get($key, $default);
+        $value = Cache::get($this->prefix.$key, $default);
 
         return $value;
+    }
+
+    public function has($key)
+    {
+        return Cache::has($key);
     }
 }
