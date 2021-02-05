@@ -1,10 +1,12 @@
 {
     "name": "foxlaby/laravel-options",
-    "description": "Your Package Description here",
+    "description": "You can create options, reuse them and rely on them at a later time. Inspired by the WordPress system and built on the Laravel framework",
     "type": "library",
     "license": "MIT",
     "keywords": [
-		"laravel"
+		"laravel",
+        "foxlaby",
+        "options"
 	],
     "authors": [
         {
@@ -25,6 +27,9 @@
         "fzaninotto/faker": "^1.9@dev"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Foxlaby\\LaravelOptions\\": "src/"
         }

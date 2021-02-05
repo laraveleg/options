@@ -19,6 +19,12 @@ class LaravelOptions
             return null;
         }
 
+        if (!$minutes) {
+            Cache::forever($this->prefix.$key, $value);
+
+            return $value;
+        }
+
         Cache::put($this->prefix.$key, $value, now()->addMinutes($minutes));
 
         return $value;
@@ -31,8 +37,21 @@ class LaravelOptions
         return $value;
     }
 
-    public function has($key)
+    public function has($key = null)
     {
+        if (!$key) {
+            return false;
+        }
+
         return Cache::has($key);
+    }
+
+    public function remove($key = null)
+    {
+        if (!$key) {
+            return false;
+        }
+
+        return Cache::forget($key);
     }
 }
