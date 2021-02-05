@@ -14,7 +14,7 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/LaravelOptions.php', 'laravel-options');
+        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-options.php', 'laravel-options');
 
         $this->publishConfig();
 
@@ -57,7 +57,7 @@ class LaravelOptionsServiceProvider extends ServiceProvider
     public function register()
     {
         // Register facade
-        $this->app->singleton('laravel-options', function () {
+        $this->app->singleton('LaravelOptions', function () {
             return new LaravelOptions;
         });
     }
