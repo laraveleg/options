@@ -13,19 +13,19 @@ class LaravelOptions
         $this->prefix = $prefix;
     }
 
-    public function put($key, $value = null, $minutes = null)
+    public function put($key, $value = null, $expiration = null)
     {
         if (!$value) {
             return null;
         }
 
-        if (!$minutes) {
+        if (!$expiration) {
             Cache::forever($this->prefix.$key, $value);
 
             return $value;
         }
 
-        Cache::put($this->prefix.$key, $value, now()->addMinutes($minutes));
+        Cache::put($this->prefix.$key, $value, $expiration);
 
         return $value;
     }

@@ -20,13 +20,13 @@ You can manage options in a simple way by helpers.
 ### add_option
 You can add an option through the following line :-
 ```php
-add_option($key, $value, $minutes);
+add_option($key, $value, $expiration);
 ```
 `$key`: The option ID that you will use to fetch its value.
 
 `$value`: Put the value of any type of data.
 
-`$minutes`: The number of expiry minutes. This can be unused and saved all the time. Ex: `add_option($key, $value)`.
+`$expiration`: Expiration date. This can be unused and saved all the time. Ex: `add_option($key, $value)`.
 
 ### get_option
 Fetching value for a specific option :-

@@ -1,9 +1,9 @@
 <?php
 
 if (!function_exists('add_option')) {
-    function add_option($key = null, $value = null, $minutes = null)
+    function add_option($key = null, $value = null, $expiration = null)
     {
-        return app('LaravelOptions')->put($key, $value, $minutes);
+        return app('LaravelOptions')->put($key, $value, $expiration);
     }
 }
 
