@@ -1,11 +1,11 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Drivers;
+namespace Foxlaby\LaravelOptions\Modes;
 
 use Illuminate\Support\Facades\Cache;
-use Foxlaby\LaravelOptions\Drivers\DriverInterface;
+use Foxlaby\LaravelOptions\Modes\ModeInterface;
 
-class CacheDriver implements DriverInterface
+class CacheMode implements ModeInterface
 {
     private $prefix;
 

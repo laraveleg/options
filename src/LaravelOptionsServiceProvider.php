@@ -13,41 +13,19 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../config/laravel-options.php', 'laravel-options');
+    {        
+        $this->mergeConfigFrom(__DIR__ . '/../config/laraveloptions.php', 'laraveloptions');
 
         $this->publishConfig();
 
-        // $this->loadViewsFrom(__DIR__.'/resources/views', 'laravel-options');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->registerRoutes();
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        // Publishes
+        // $this->publishes([
+        //     __DIR__ . '/../database/migrations/2021_08_17_113422_foxlaby_laravel_option_table.php' => database_path('migrations/2021_08_17_113422_foxlaby_laravel_option_table.php'),
+        // ], ['foxlaby', 'laravel-options']);
     }
 
-    /**
-     * Register the package routes.
-     *
-     * @return void
-     */
-    private function registerRoutes()
-    {
-        Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/Http/routes.php');
-        });
-    }
-
-    /**
-    * Get route group configuration array.
-    *
-    * @return array
-    */
-    private function routeConfiguration()
-    {
-        return [
-            'namespace'  => "Foxlaby\LaravelOptions\Http\Controllers",
-            'middleware' => 'api',
-            'prefix'     => 'api'
-        ];
-    }
 
     /**
      * Register any application services.
@@ -71,7 +49,7 @@ class LaravelOptionsServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/LaravelOptions.php' => config_path('LaravelOptions.php'),
+                __DIR__ . '/../config/laraveloptions.php' => config_path('laraveloptions.php'),
             ], 'config');
         }
     }

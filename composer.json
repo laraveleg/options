@@ -16,7 +16,9 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable":true,
-    "require": {},
+    "require": {
+        "mvdnbrk/laravel-model-expires": "^1.8.1"
+    },
     "require-dev": {
         "symfony/thanks": "^1.0",
         "phpunit/phpunit": "^7.4@dev",

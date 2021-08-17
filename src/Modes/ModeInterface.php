@@ -1,8 +1,8 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Drivers;
+namespace Foxlaby\LaravelOptions\Modes;
 
-interface DriverInterface
+interface ModeInterface
 {
     public function __construct($prefix = '');
 
