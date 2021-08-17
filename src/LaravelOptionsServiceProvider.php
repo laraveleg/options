@@ -2,8 +2,9 @@
 
 namespace Foxlaby\LaravelOptions;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+use Foxlaby\LaravelOptions\Models\FoxlabyLaravelOption;
 
 class LaravelOptionsServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {        
+    {
+        FoxlabyLaravelOption::onlyExpired()->delete();
+
         $this->mergeConfigFrom(__DIR__ . '/../config/laraveloptions.php', 'laraveloptions');
 
         $this->publishConfig();
