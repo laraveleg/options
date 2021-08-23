@@ -78,7 +78,7 @@ class Unit extends Model
 You can add an option through the following line :-
 ```php
 $unit = Unit::find(1);
-$unit->add_option($key, $value, $expiration);
+$unit->addOption($key, $value, $expiration);
 ```
 `$key`: The option ID that you will use to fetch its value.
 
@@ -90,7 +90,7 @@ $unit->add_option($key, $value, $expiration);
 Fetching value for a specific option :-
 ```php
 $unit = Unit::find(1);
-$unit->get_option($key, $default)
+$unit->getOption($key, $default)
 ```
 `$key`: The option ID.
 `$default`: You can specify a default value if the option is not found.
@@ -99,7 +99,7 @@ $unit->get_option($key, $default)
 Make sure the option is there :-
 ```php
 $unit = Unit::find(1);
-$unit->has_option($key)
+$unit->hasOption($key)
 ```
 `$key`: The option ID.
 
@@ -107,7 +107,7 @@ $unit->has_option($key)
 You can delete any option :-
 ```php
 $unit = Unit::find(1);
-$unit->remove_option($key)
+$unit->removeOption($key)
 ```
 `$key`: The option ID.
 
