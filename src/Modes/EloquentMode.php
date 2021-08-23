@@ -1,10 +1,10 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Modes;
+namespace LaravelEG\LaravelOptions\Modes;
 
 use Illuminate\Support\Facades\Cache;
-use Foxlaby\LaravelOptions\Modes\ModeInterface;
-use Foxlaby\LaravelOptions\Models\FoxlabyLaravelOption;
+use LaravelEG\LaravelOptions\Modes\ModeInterface;
+use LaravelEG\LaravelOptions\Models\LaravelEGLaravelOption;
 
 class EloquentMode implements ModeInterface
 {
@@ -32,7 +32,7 @@ class EloquentMode implements ModeInterface
             $data['expires_at'] = now()->addMinutes($expiration);
         }
 
-        $option = FoxlabyLaravelOption::where('option_key', '=', $this->prefix.$key.':'.$reflect_id)->first();
+        $option = LaravelEGLaravelOption::where('option_key', '=', $this->prefix.$key.':'.$reflect_id)->first();
 
         if ($option) {
             $option->option_value = $value;
@@ -41,14 +41,14 @@ class EloquentMode implements ModeInterface
             return $value;
         }
 
-        FoxlabyLaravelOption::create($data);
+        LaravelEGLaravelOption::create($data);
 
         return $value;
     }
 
     public function get($key, $default = null, $reflect_model = null, $reflect_id = null)
     {
-        $option = FoxlabyLaravelOption::expiring()
+        $option = LaravelEGLaravelOption::expiring()
             ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
             ->where('reflect_model', '=', $reflect_model)
             ->where('reflect_id', '=', $reflect_id)
@@ -63,7 +63,7 @@ class EloquentMode implements ModeInterface
 
     public function has($key = null, $reflect_model = null, $reflect_id = null)
     {
-        $exists = FoxlabyLaravelOption::expiring()
+        $exists = LaravelEGLaravelOption::expiring()
             ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
             ->where('reflect_model', '=', $reflect_model)
             ->where('reflect_id', '=', $reflect_id)
@@ -74,7 +74,7 @@ class EloquentMode implements ModeInterface
 
     public function remove($key = null, $reflect_model = null, $reflect_id = null)
     {
-        return FoxlabyLaravelOption::expiring()
+        return LaravelEGLaravelOption::expiring()
             ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
             ->where('reflect_model', '=', $reflect_model)
             ->where('reflect_id', '=', $reflect_id)

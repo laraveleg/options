@@ -1,12 +1,12 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Models;
+namespace LaravelEG\LaravelOptions\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Mvdnbrk\EloquentExpirable\Expirable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class FoxlabyLaravelOption extends Model
+class LaravelEGLaravelOption extends Model
 {
     use HasFactory;
     use Expirable;

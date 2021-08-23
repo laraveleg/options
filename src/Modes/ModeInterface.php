@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Modes;
+namespace LaravelEG\LaravelOptions\Modes;
 
 interface ModeInterface
 {

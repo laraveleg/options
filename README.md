@@ -1,15 +1,15 @@
-# laravel-options
+# laravel options
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Travis](https://img.shields.io/travis/foxlaby/laravel-options.svg?style=flat-square)]()
-[![Total Downloads](https://img.shields.io/packagist/dt/foxlaby/laravel-options.svg?style=flat-square)](https://packagist.org/packages/foxlaby/laravel-options)
+[![Travis](https://img.shields.io/travis/laraveleg/options.svg?style=flat-square)]()
+[![Total Downloads](https://img.shields.io/packagist/dt/laraveleg/options.svg?style=flat-square)](https://packagist.org/packages/laraveleg/options)
 
 You can create options, reuse them and rely on them at a later time. Inspired by the [WordPress](https://codex.wordpress.org/Options_API) system and built on the `Laravel` framework.
 
 ## Install
 
 ```bash
-composer require foxlaby/laravel-options
+composer require laraveleg/options
 ```
 
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Tests;
+namespace LaravelEG\LaravelOptions\Tests;
 
-use Foxlaby\LaravelOptions\LaravelOptionsServiceProvider;
+use LaravelEG\LaravelOptions\LaravelOptionsServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase

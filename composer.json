@@ -1,5 +1,5 @@
 {
-    "name": "foxlaby/laravel-options",
+    "name": "laraveleg/options",
     "description": "You can create options, reuse them and rely on them at a later time. Inspired by the WordPress system and built on the Laravel framework",
     "type": "library",
     "license": "MIT",
@@ -33,12 +33,12 @@
             "src/helpers.php"
         ],
         "psr-4": {
-            "Foxlaby\\LaravelOptions\\": "src/"
+            "LaravelEG\\LaravelOptions\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Foxlaby\\LaravelOptions\\Tests\\":"tests/"
+            "LaravelEG\\LaravelOptions\\Tests\\":"tests/"
         }
     },
     "config": {
@@ -52,10 +52,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Foxlaby\\LaravelOptions\\LaravelOptionsServiceProvider"
+                "LaravelEG\\LaravelOptions\\LaravelOptionsServiceProvider"
             ],
             "aliases": {
-                "LaravelOptions": "Foxlaby\\LaravelOptions\\LaravelOptionsFacade"
+                "LaravelOptions": "LaravelEG\\LaravelOptions\\LaravelOptionsFacade"
             }
         }
     }

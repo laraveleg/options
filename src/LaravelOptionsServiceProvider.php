@@ -1,10 +1,10 @@
 <?php
 
-namespace Foxlaby\LaravelOptions;
+namespace LaravelEG\LaravelOptions;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use Foxlaby\LaravelOptions\Models\FoxlabyLaravelOption;
+use LaravelEG\LaravelOptions\Models\LaravelEGLaravelOption;
 
 class LaravelOptionsServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        FoxlabyLaravelOption::onlyExpired()->delete();
+        LaravelEGLaravelOption::onlyExpired()->delete();
 
         $this->mergeConfigFrom(__DIR__ . '/../config/laraveloptions.php', 'laraveloptions');
 
@@ -25,7 +25,7 @@ class LaravelOptionsServiceProvider extends ServiceProvider
 
         // Publishes
         // $this->publishes([
-        //     __DIR__ . '/../database/migrations/2021_08_17_113422_foxlaby_laravel_option_table.php' => database_path('migrations/2021_08_17_113422_foxlaby_laravel_option_table.php'),
+        //     __DIR__ . '/../database/migrations/2021_08_17_113422_laravel_option_table.php' => database_path('migrations/2021_08_17_113422_laravel_option_table.php'),
         // ], ['foxlaby', 'laravel-options']);
     }
 

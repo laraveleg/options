@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class FoxlabyLaravelOptionTable extends Migration
+class LaravelEGLaravelOptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class FoxlabyLaravelOptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('foxlaby_laravel_options', function (Blueprint $table) {
+        Schema::create('laravel_options', function (Blueprint $table) {
             $table->id();
             $table->string('option_key')->index()->unique();
             $table->text('option_value');
@@ -31,6 +31,6 @@ class FoxlabyLaravelOptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('foxlaby_laravel_options');
+        Schema::dropIfExists('laravel_options');
     }
 }

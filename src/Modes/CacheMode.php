@@ -1,9 +1,9 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Modes;
+namespace LaravelEG\LaravelOptions\Modes;
 
 use Illuminate\Support\Facades\Cache;
-use Foxlaby\LaravelOptions\Modes\ModeInterface;
+use LaravelEG\LaravelOptions\Modes\ModeInterface;
 
 class CacheMode implements ModeInterface
 {

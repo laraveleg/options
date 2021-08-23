@@ -1,9 +1,9 @@
 <?php
 
-namespace Foxlaby\LaravelOptions;
+namespace LaravelEG\LaravelOptions;
 
-use Foxlaby\LaravelOptions\Modes\CacheMode;
-use Foxlaby\LaravelOptions\Modes\EloquentMode;
+use LaravelEG\LaravelOptions\Modes\CacheMode;
+use LaravelEG\LaravelOptions\Modes\EloquentMode;
 
 class LaravelOptions
 {

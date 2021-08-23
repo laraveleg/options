@@ -1,8 +1,8 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Traits;
+namespace LaravelEG\LaravelOptions\Traits;
 
-use Foxlaby\LaravelOptions\Drivers\DatabaseDriver;
+use LaravelEG\LaravelOptions\Drivers\DatabaseDriver;
 
 trait LaravelOptionEloquentMode
 {

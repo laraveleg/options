@@ -1,9 +1,9 @@
 <?php
 
-namespace Foxlaby\LaravelOptions\Tests\Unit;
+namespace LaravelEG\LaravelOptions\Tests\Unit;
 
-use Foxlaby\LaravelOptions\LaravelOptions;
-use Foxlaby\LaravelOptions\Tests\TestCase;
+use LaravelEG\LaravelOptions\LaravelOptions;
+use LaravelEG\LaravelOptions\Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
