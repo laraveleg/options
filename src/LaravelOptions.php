@@ -1,57 +1,28 @@
 <?php
 
-namespace Foxlaby\LaravelOptions;
+namespace LaravelEG\LaravelOptions;
 
-use Illuminate\Support\Facades\Cache;
+use LaravelEG\LaravelOptions\Modes\CacheMode;
+use LaravelEG\LaravelOptions\Modes\EloquentMode;
 
 class LaravelOptions
 {
-    private $prefix;
+    public $modes = [
+        'cache' => CacheMode::class,
+        'eloquent' => EloquentMode::class,
+    ];
 
     public function __construct($prefix = '')
     {
         $this->prefix = $prefix;
     }
 
-    public function put($key, $value = null, $expiration = null)
-    {
-        if (!$value) {
-            return null;
+    public function runDriver()
+    {        
+        if (config('laraveloptions.eloquent_mode')) {
+            return new $this->modes['eloquent']($this->prefix);
         }
 
-        if (!$expiration) {
-            Cache::forever($this->prefix.$key, $value);
-
-            return $value;
-        }
-
-        Cache::put($this->prefix.$key, $value, $expiration);
-
-        return $value;
-    }
-
-    public function get($key, $default = null)
-    {
-        $value = Cache::get($this->prefix.$key, $default);
-
-        return $value;
-    }
-
-    public function has($key = null)
-    {
-        if (!$key) {
-            return false;
-        }
-
-        return Cache::has($key);
-    }
-
-    public function remove($key = null)
-    {
-        if (!$key) {
-            return false;
-        }
-
-        return Cache::forget($key);
+        return new $this->modes['cache']($this->prefix);
     }
 }

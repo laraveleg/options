@@ -1,6 +1,6 @@
 <?php
 
-namespace Foxlaby\LaravelOptions;
+namespace LaravelEG\LaravelOptions;
 
 use Illuminate\Support\Facades\Facade;
 
