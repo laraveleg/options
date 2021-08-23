@@ -15,7 +15,9 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        LaravelEGLaravelOption::onlyExpired()->delete();
+        if (config('laraveloptions.eloquent_mode')) {
+            LaravelEGLaravelOption::onlyExpired()->delete();
+        }
 
         $this->mergeConfigFrom(__DIR__ . '/../config/laraveloptions.php', 'laraveloptions');
 
