@@ -22,13 +22,6 @@ class LaravelOptionsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/laraveloptions.php', 'laraveloptions');
 
         $this->publishConfig();
-
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
-        // Publishes
-        // $this->publishes([
-        //     __DIR__ . '/../database/migrations/2021_08_17_113422_laravel_option_table.php' => database_path('migrations/2021_08_17_113422_laravel_option_table.php'),
-        // ], ['foxlaby', 'laravel-options']);
     }
 
 
@@ -56,6 +49,10 @@ class LaravelOptionsServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/laraveloptions.php' => config_path('laraveloptions.php'),
             ], 'config');
+
+            $this->publishes([
+                __DIR__ . '/../database/migrations/2021_08_17_113422_laraveleg_option_table.php' => database_path('migrations/2021_08_17_113422_laraveleg_option_table.php'),
+            ], 'migrations');
         }
     }
 }

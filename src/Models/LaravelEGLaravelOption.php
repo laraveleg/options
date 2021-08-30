@@ -12,6 +12,13 @@ class LaravelEGLaravelOption extends Model
     use Expirable;
 
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'laraveleg_options';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -23,4 +30,12 @@ class LaravelEGLaravelOption extends Model
         'reflect_id',
         'expires_at',
     ];
+
+    /**
+     * Get all of the options.
+     */
+    public function model()
+    {
+        return $this->morphTo();
+    }
 }
