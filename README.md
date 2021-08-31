@@ -122,6 +122,14 @@ $unit->removeOption($key)
 
 > You an use this `Trait` in any model on your app.
 
+## Command-lines
+
+### Remove all options
+```bash
+php artisan laraveleg:options:remove-all
+```
+Remove all options on eloquent mode
+
 ## Testing
 
 Run the tests with:
