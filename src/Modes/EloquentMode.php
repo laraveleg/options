@@ -6,33 +6,58 @@ use Illuminate\Support\Facades\Cache;
 use LaravelEG\LaravelOptions\Modes\ModeInterface;
 use LaravelEG\LaravelOptions\Models\LaravelEGLaravelOption;
 
+/**
+ * EloquentMode Class
+ * 
+ * This class uses the eloquent for add option to model.
+ */
 class EloquentMode implements ModeInterface
 {
+    /**
+     * The prefix associated with the model.
+     *
+     * @var string
+     */
     private $prefix;
 
+    /**
+     * Construct
+     *
+     * @return void
+     */
     public function __construct($prefix = '')
     {
         $this->prefix = $prefix;
     }
 
-    public function put($key, $value = null, $expiration = null, $reflect_model = null, $reflect_id = null)
+    /**
+     * Put method
+     * 
+     * Add an option to the options table for the model
+     * 
+     * @param String $key - Write a key for option
+     * @param String $value - Write a value for option
+     * @param String $expiration - Set expiration for the option
+     * @param object $model - The object from the model that uses the trait `HasLaravelEGOptions`
+     * 
+     * @return String $value
+     */
+    public function put($key, $value = null, $expiration = null, $model = null)
     {
         if (!$value) {
             return null;
         }
 
         $data = [
-            'option_key' => $this->prefix.$key.':'.$reflect_id,
+            'option_key' => $this->prefix.$key.':'.$model->id,
             'option_value' => $value,
-            'reflect_model' => $reflect_model,
-            'reflect_id' => $reflect_id,
         ];
 
         if (!is_null($expiration)) {
             $data['expires_at'] = now()->addMinutes($expiration);
         }
 
-        $option = LaravelEGLaravelOption::where('option_key', '=', $this->prefix.$key.':'.$reflect_id)->first();
+        $option = LaravelEGLaravelOption::where('option_key', '=', $this->prefix.$key.':'.$model->id)->first();
 
         if ($option) {
             $option->option_value = $value;
@@ -41,17 +66,26 @@ class EloquentMode implements ModeInterface
             return $value;
         }
 
-        LaravelEGLaravelOption::create($data);
+        $model->morphMany(LaravelEGLaravelOption::class, 'model')->create($data);
 
         return $value;
     }
 
-    public function get($key, $default = null, $reflect_model = null, $reflect_id = null)
+    /**
+     * Get method
+     * 
+     * Get an option from the options table for the model
+     * 
+     * @param String $key - Write a key for option
+     * @param String $default - Set a default value if the option has no value
+     * @param object $model - The object from the model who uses the trait `HasLaravelEGOptions`
+     * 
+     * @return String $value
+     */
+    public function get($key, $default = null, $model = null)
     {
-        $option = LaravelEGLaravelOption::expiring()
-            ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
-            ->where('reflect_model', '=', $reflect_model)
-            ->where('reflect_id', '=', $reflect_id)
+        $option = $model->options()
+            ->withoutExpired()
             ->first();
 
         if (!$option) {
@@ -61,23 +95,39 @@ class EloquentMode implements ModeInterface
         return $option->option_value;
     }
 
-    public function has($key = null, $reflect_model = null, $reflect_id = null)
+    /**
+     * Has method
+     * 
+     * Check option on the options table for the model
+     * 
+     * @param String $key - Write a key for option
+     * @param object $model - The object from the model who uses the trait `HasLaravelEGOptions`
+     * 
+     * @return Boolean
+     */
+    public function has($key = null, $model = null)
     {
-        $exists = LaravelEGLaravelOption::expiring()
-            ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
-            ->where('reflect_model', '=', $reflect_model)
-            ->where('reflect_id', '=', $reflect_id)
+        return $model->options()
+            ->withoutExpired()
+            ->where('option_key', '=', $key.':'.$model->id)
             ->exists();
-
-        return $exists;
     }
 
-    public function remove($key = null, $reflect_model = null, $reflect_id = null)
+    /**
+     * Remove method
+     * 
+     * Delete option from the options table for the model
+     * 
+     * @param String $key - Write a key for option
+     * @param object $model - The object from the model who uses the trait `HasLaravelEGOptions`
+     * 
+     * @return Boolean
+     */
+    public function remove($key = null, $model = null)
     {
-        return LaravelEGLaravelOption::expiring()
-            ->where('option_key', '=', $this->prefix.$key.':'.$reflect_id)
-            ->where('reflect_model', '=', $reflect_model)
-            ->where('reflect_id', '=', $reflect_id)
+        return $model->options()
+            ->withoutExpired()
+            ->where('option_key', '=', $key.':'.$model->id)
             ->delete();
     }
 }

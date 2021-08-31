@@ -57,6 +57,15 @@ remove_option($key)
 ## Eloquent Mode
 You can put the settings to a specific element in a specific model.
 
+### Vendor publish
+```bash
+php artisan vendor:publish --provider="LaravelEG\LaravelOptions\LaravelOptionsServiceProvider"
+```
+#### Migrate options table
+```bash
+php artisan migrate
+```
+
 ### Set config
 Go to `laraveloptions.php` file in configs directory
 ```php
@@ -67,11 +76,11 @@ Go to `laraveloptions.php` file in configs directory
 Add the trait in your specific model.
 
 ```php
-use LaravelEG\LaravelOptions\Traits\LaravelOptionEloquentMode;
+use LaravelEG\LaravelOptions\Traits\HasLaravelEGOptions;
 
 class Unit extends Model
 {
-    use LaravelOptionEloquentMode;
+    use HasLaravelEGOptions;
 ```
 
 ### add_option

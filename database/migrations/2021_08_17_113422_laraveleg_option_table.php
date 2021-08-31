@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class LaravelEGLaravelOptionTable extends Migration
+class LaravelEGOptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class LaravelEGLaravelOptionTable extends Migration
      */
     public function up()
     {
-        Schema::create('laravel_options', function (Blueprint $table) {
+        Schema::create('laraveleg_options', function (Blueprint $table) {
             $table->id();
+            $table->morphs('model');
             $table->string('option_key')->index()->unique();
             $table->text('option_value');
-            $table->string('reflect_model')->index()->nullable();
-            $table->integer('reflect_id')->index()->nullable();
             $table->expires();
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ class LaravelEGLaravelOptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laravel_options');
+        Schema::dropIfExists('laraveleg_options');
     }
 }
