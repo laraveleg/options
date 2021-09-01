@@ -5,6 +5,7 @@ namespace LaravelEG\LaravelOptions;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use LaravelEG\LaravelOptions\Models\LaravelEGLaravelOption;
+use LaravelEG\LaravelOptions\Console\Commands\RemoveOptionsCommand;
 
 class LaravelOptionsServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,12 @@ class LaravelOptionsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                RemoveOptionsCommand::class,
+            ]);
+        }
+
         if (config('laraveloptions.eloquent_mode')) {
             LaravelEGLaravelOption::onlyExpired()->delete();
         }
