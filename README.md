@@ -6,10 +6,26 @@
 
 You can create options, reuse them and rely on them at a later time. Inspired by the [WordPress](https://codex.wordpress.org/Options_API) system and built on the `Laravel` framework.
 
-## Install
+## Install for laravel
 
 ```bash
 composer require laraveleg/options
+```
+
+## Install for lumen
+```bash
+composer require laraveleg/options
+```
+
+### Register service provider
+Go to `bootstrap/app.php` file and add the following line
+```php
+$app->register(LaravelEG\LaravelOptions\LumenOptionsServiceProvider::class);
+```
+
+### Migrate options table
+```bash
+php artisan migrate
 ```
 
 
