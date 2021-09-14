@@ -86,6 +86,7 @@ class EloquentMode implements ModeInterface
     {
         $option = $model->options()
             ->withoutExpired()
+            ->where('option_key', '=', $key.':'.$model->id)
             ->first();
 
         if (!$option) {
